@@ -33,4 +33,4 @@ contracts; only the lead changes it.
 | Area | Directories | Owner | Issues |
 |---|---|---|---|
 | core | receipts/model.py, docs/design.md | @atiladeokegab | — |
-| parse | receipts/parse/, tests/parse/ | @Atilmatrix | — |
+| parse | receipts/parse/, tests/parse/ | @Atilmatrix | #1 (vertical) |
