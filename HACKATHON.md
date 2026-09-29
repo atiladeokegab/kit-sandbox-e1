@@ -1,14 +1,15 @@
-# <Event name>
+# Kit sandbox E1+E2
 
-<One-paragraph brief: what we're building and for which track.>
+A rehearsal of the team kit: one teammate plans their own vertical and keeps up with reviews,
+questions and brief changes through the team inbox.
 
-Official rules: <link>
+Official rules: none (internal rehearsal)
 
-Smoke: `<the one command that proves the product works: tests plus one end-to-end run>`
+Smoke: `uv run --with pytest python -m pytest -q`
 
 The product that ships is `main`: the last commit that passed the smoke check.
 
-Board: <link to the event's GitHub Project board>
+Board: see the repo's Projects tab
 
 ## Deadlines
 
@@ -17,18 +18,19 @@ date, so this UTC column is the clock, never the milestone.
 
 | Deadline | Event time | UTC |
 |---|---|---|
-| code freeze | <YYYY-MM-DDTHH:MM±HH:MM> | <YYYY-MM-DDTHH:MMZ> |
-| submit | <YYYY-MM-DDTHH:MM±HH:MM> | <YYYY-MM-DDTHH:MMZ> |
+| code freeze | 2026-09-30T16:00+01:00 | 2026-09-30T15:00Z |
+| submit | 2026-09-30T17:00+01:00 | 2026-09-30T16:00Z |
 
 ## Judging criteria
 
-- <criterion>: <weight>
+- The demo line works on `main`: 100%
 
 ## Team
 
 | Name | GitHub | Role |
 |---|---|---|
-| <name> | @<handle> | <role> |
+| Atilade | @atiladeokegab | lead, core, designer |
+| Matrix | @Atilmatrix | parse |
 
-The lead's agents: <e.g. "Zeus plans, reviews and merges; Prometheus builds">. When this page
-or a review says "the lead", it may be one of them acting for the lead.
+The lead's agents: Zeus plans, reviews and merges. When this page or a review says "the lead",
+it may be Zeus acting for the lead.

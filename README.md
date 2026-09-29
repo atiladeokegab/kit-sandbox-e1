@@ -1,13 +1,13 @@
-# <Project name>
+# receipts
 
-<One paragraph: what we're building and who it's for.>
+A command that reads a CSV export of receipts and prints the total per category, for small teams who add receipts up by hand each month. A rehearsal of the team kit.
 
 What we're building and who owns which part: [IDEA.md](IDEA.md). Deadlines, rules and
 the team: [HACKATHON.md](HACKATHON.md). Who is doing what, live: the board linked in HACKATHON.md.
 
 ## Quick start
 
-1. `gh repo clone <this repo>`
+1. `gh repo clone atiladeokegab/kit-sandbox-e1`
 2. Open your AI tool (Claude Code, Codex, Cursor, Copilot…) in the folder.
 3. Tell it: *"Read AGENTS.md, then pick up my issue."*
 
@@ -38,7 +38,7 @@ flowchart TB
         A["1 · Paste the event brief"] --> B["2 · Pull out every deadline"]
         B --> C["3 · Pitch ideas, then plan one: brainstorm, challenge it, draw it"]
         C --> D["4 · Approve IDEA.md: what we build, the areas, the smoke check"]
-        D --> E["5 · Split it into tasks; each area gets an owner"]
+        D --> E["5 · One vertical per owner: what you own and must deliver"]
     end
     subgraph GH["On GitHub: this repo"]
         F["6 · Every task becomes an Issue"]
@@ -50,7 +50,7 @@ flowchart TB
         G["7 · Your agent picks up your issue"] --> H["8 · Plan comment, branch, small commits"]
         H --> I["9 · Pull request"]
     end
-    E --> F --> G
+    E --> F --> V["6b · Your agent drafts the tasks for your vertical; the lead asks up to 3 questions"] --> G
     I --> R
     R -- "changes needed" --> H
     R -- "approved" --> M
@@ -85,7 +85,7 @@ flowchart TB
     D --> E["gh repo clone this repo"]
     E --> F["Open your AI tool in the folder"]
     F --> G["Say: Read AGENTS.md, then pick up my issue"]
-    G --> H{"Your agent checks"}
+    G --> H{"Your agent runs scripts/team-inbox.sh"}
     H -- "a PR of yours has review comments" --> I["Fix those first"]
     H -- "a question for you" --> Q["Show you it, with a draft answer"]
     H -- "you have an assigned issue" --> J["Take it, ready ones first"]
@@ -194,6 +194,7 @@ Every one of these happened for real while this kit was tested.
 | `gh issue list --assignee @me` ignores the filter (PowerShell) | PowerShell reads `@me` as its own syntax | Quote it: `"@me"` |
 | `fatal: Need to specify how to reconcile divergent branches` | Plain `git pull` refuses once your branch and `integration` have both moved | `git pull --no-rebase origin integration`, fix conflicts in your area, commit, push |
 | `GraphQL: Projects (classic) is being deprecated` | `gh issue view` / `gh pr view` without `--json`, on gh older than 2.77 | Use the `--json` form from AGENTS.md, or update gh |
+| `API rate limit exceeded` from `team-inbox.sh` | Checking far more often than every 5 minutes | Check after each push and every 5 minutes, not in a tight loop |
 | `GH006: Protected branch update failed` | You pushed to `integration` or `main` | Push to your issue's branch and open a PR |
 | "Waiting on code owner review" | The lead hasn't approved your PR yet (or a push cancelled the approval) | Nothing: wait for the lead's review |
 | Your plan comment shows up garbled | Windows PowerShell's `>` wrote the file as UTF-16 | Write it with your editor, or `Set-Content -Encoding utf8` |
@@ -224,4 +225,8 @@ Every one of these happened for real while this kit was tested.
 
 ## Architecture
 
-<!-- the lead adds the C4 diagrams here -->
+![System context](docs/architecture/c4_context.png)
+
+![Containers](docs/architecture/c4_container.png)
+
+![Components](docs/architecture/c4_component.png)

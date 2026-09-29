@@ -5,23 +5,25 @@ complete. If your task doesn't fit this page, open a change-request (AGENTS.md �
 
 ## Problem
 
-<Who has the problem, and what it costs them. Two or three sentences.>
+Small teams keep receipts in a spreadsheet export and add them up by hand each month. It takes
+an hour and the total is often wrong.
 
 ## The idea
 
-<What we build, in one paragraph.>
+`receipts`: a command that reads a CSV export of receipts and prints the total per category.
 
 ## What we build
 
-- <feature>
+- Parsing the CSV export into `Receipt` records (Matrix)
+- Totals per category and the command line (Zeus, for the lead)
 
 ## What we don't build
 
-- <tempting thing we are deliberately leaving out>
+- Currency conversion, OCR of paper receipts, a web page
 
 ## The demo, in one line
 
-<What the judges see in 30 seconds.>
+`python3 -m receipts samples/march.csv` prints three category totals that match the sheet.
 
 ## Areas and owners
 
@@ -30,5 +32,5 @@ contracts; only the lead changes it.
 
 | Area | Directories | Owner | Issues |
 |---|---|---|---|
-| core | <dirs> | @<lead handle> | #<n> |
-| <area> | <dirs> | @<handle> | #<n>, #<n> |
+| core | receipts/model.py, docs/design.md | @atiladeokegab | — |
+| parse | receipts/parse/, tests/parse/ | @Atilmatrix | — |
